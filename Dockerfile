@@ -1,4 +1,4 @@
-FROM python:3.6-slim
+FROM python:3.7
 
 ENV HOME=/app
 
@@ -16,5 +16,5 @@ EXPOSE 5017
 
 COPY . $HOME
 
-# Entrypoint
-CMD ["gunicorn", "--log-level", "warning", "--capture-output", "--enable-stdio-inheritance", "--workers", "4", "--bind", "0.0.0.0:5017", "api:app"]
+# Sobe a aplicação com log sem buffer
+ENTRYPOINT ["python", "-u", "api.py"]

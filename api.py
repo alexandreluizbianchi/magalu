@@ -1,8 +1,8 @@
-from flask_restplus import Api, fields, Resource
+from flask_restplus import Api, Resource
 from flask import Flask, Blueprint
 from flask_cors import CORS
 import pandas as pd
-import json
+from waitress import serve
 
 import util
 import predict
@@ -21,7 +21,6 @@ test_data = util.conv_one_hot_enc(test_data, 'god', is_bool=False)
 
 # Carrega modelo completo para predições, previamente criado:
 predict.load('full_model.json')
-
 
 api = Api(
     version="1.0",
@@ -70,5 +69,4 @@ api.add_namespace(ns)
 
 app.register_blueprint(blueprint)
 
-# remover esta linha
-app.run(host = "0.0.0.0", port=5017, debug=False)
+serve(app, host = "0.0.0.0", port = 5017)

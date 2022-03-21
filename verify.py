@@ -25,10 +25,7 @@ def main():
     print(train_data.isna().mean(axis=0))
     print('\nBalanceamento das classes:')
     print(train_data.strategy.value_counts())
-    # Diagrama de Dispersão: correlações...
-    # Histograma de Distribuição de classes
-    # ...
-
+    
     # Remoção do que não é feature:
     train_data.drop(['id', 'name'], axis=1, inplace=True)
 
