@@ -41,14 +41,14 @@ def main():
     X = train_data.drop('late', axis=1)
     y = train_data.late
 
+    print('\nDez primeiros atributos de treino:')
+    print(X.head(10))
+    print('\nDez primeiros labels de treino:')
+    print(y.head(10))
+    
     # Treinamento e geração do modelo completo, em arquivo:
     train.run(X, y, 'full_model.json')
 
-    print('\nDez primeiros elementos de treino:')
-    print(X.head(10))
-    print('\nDez primeiros elementos de teste:')
-    print(y.head(10))
-    
     # Opção: separar dados de treino em: 
     # 80% para treino e 20% para teste (check de acurácia):
     X_train, X_test, y_train, y_test = train_test_split(
